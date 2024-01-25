@@ -19,6 +19,7 @@ model Admin{
   updatedAt DateTime @updatedAt
   email String
   whatsapp String
+  invoices Invoice[]
   projects Project []
   clients Client[]
 
@@ -36,7 +37,9 @@ model Client{
   adminId Int 
   admin Admin @relation(fields:[adminId],references: [id])
   projects Project []
-  
+  sharedLinks SharedLink[]
+  invoice Invoice[]
+
 } 
 
 model Project{
@@ -63,6 +66,9 @@ model Project{
   updatedAt DateTime @updatedAt
   serviceId Int
   projectService Service @relation(fields: [serviceId], references: [id])
+  ressources Ressource[]
+  invoiceId Int
+  invoice Invoice @relation(fields: [invoiceId],references: [id])
 } 
 // -is_finished: boolean(calculée)
 
@@ -77,6 +83,7 @@ model Milestone{
   actionItems ActionItem[]
   statusId Int
   status Status @relation(fields: [statusId], references: [id])
+  delivrables Delivrable[]
 }
 model ActionItem{
   id Int @id @default(autoincrement())
@@ -103,5 +110,39 @@ model Service{
     id Int @id @default(autoincrement())
     name String
     projects Project[]
-
+}
+model SharedLink {
+id Int @id @default(autoincrement())
+name String?
+details String?
+link String
+clientId Int
+client Client @relation(fields: [clientId], references:[id])
+ressources Ressource[]
+delivrables Delivrable[]
+}
+model Ressource{
+  id Int @id @default(autoincrement())
+  projectId Int
+  project Project @relation(fields: [projectId], references: [id])
+  sharedLinkId Int
+  sharedLink SharedLink @relation(fields: [sharedLinkId], references: [id])
+}
+model Delivrable{
+  id Int @id @default(autoincrement())
+  milestoneId Int
+  milestone Milestone @relation(fields: [milestoneId], references: [id])
+  sharedLinkId Int
+  sharedLink SharedLink @relation(fields: [sharedLinkId], references: [id])
+}
+model Invoice{
+ id Int @id @default(autoincrement()) 
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+ paiedAt DateTime @default(now())
+ projects Project[]
+ clientId Int
+ client Client @relation(fields: [clientId],references: [id])
+ adminId Int
+ admin Admin @relation(fields: [adminId], references: [id])
 }
