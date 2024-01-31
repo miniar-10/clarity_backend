@@ -8,14 +8,15 @@ export class ActionItemController {
   constructor(private readonly actionItemService: ActionItemService) {}
 
  
-  @Post(':milestoneid')
+  // @Post(':milestoneid')
+  @Post(':milestoneid/add')
   async create(@Param('milestoneid') milestoneId: string, @Body() createActionItemDto: CreateActionItemDto) {
     console.log("This is controller level");
     try{
     console.log(milestoneId)
     createActionItemDto.milestoneId=(+milestoneId)
     console.log(milestoneId)
-    console.log(createActionItemDto.milestoneId)
+    console.log(createActionItemDto.milestoneId) // Logging the name from the milestoneid
     console.log(createActionItemDto.name); // Logging the name from the DTO
     return await this.actionItemService.create(createActionItemDto);
     }

@@ -19,7 +19,7 @@ export class ActionItemService {
         description: createActionItemDto.description,
         milestoneId: createActionItemDto.milestoneId,
         deadline:null,
-        // Set other fields as necessary, based on your Prisma schema and DTO
+        assigneeId: createActionItemDto.assigneeId// Set other fields as necessary, based on your Prisma schema and DTO
       },
     
     })

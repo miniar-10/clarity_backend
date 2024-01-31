@@ -18,4 +18,10 @@ export class CreateActionItemDto {
   @IsNumber()
   milestoneId: number;
 
+  @IsOptional()
+  @IsNumber()
+  assigneeId: number;
+
+  
+
   }
