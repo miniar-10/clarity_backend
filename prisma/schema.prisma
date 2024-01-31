@@ -83,16 +83,17 @@ model Milestone{
   socre Float
   actionItems ActionItem[]
   statusId Int
-  status Status @relation(fields: [statusId], references: [id])
-  delivrables Delivrable[]
+  // status Status @relation(fields: [statusId], references: [id])
+  // delivrables Delivrable[]
 }
 model ActionItem{
   id Int @id @default(autoincrement())
   name String?
   description String?
-  deadline DateTime
+  deadline DateTime?
   milestoneId Int
-  milestone Milestone @relation(fields:[milestoneId],references: [id])
+  assigneeId Int?
+  milestone Milestone @relation(fields:[milestoneId],references: [id], onDelete: Cascade)
 }
 model Language{
   id Int @id @default(autoincrement())
@@ -104,7 +105,7 @@ model Language{
 model Status{
   id Int @id @default(autoincrement())
   name String
-  milestones Milestone[]
+  // milestones Milestone[]
 }
 
 model Service{
@@ -132,7 +133,7 @@ model Ressource{
 model Delivrable{
   id Int @id @default(autoincrement())
   milestoneId Int
-  milestone Milestone @relation(fields: [milestoneId], references: [id])
+  // milestone Milestone @relation(fields: [milestoneId], references: [id])
   sharedLinkId Int
   sharedLink SharedLink @relation(fields: [sharedLinkId], references: [id])
 }
