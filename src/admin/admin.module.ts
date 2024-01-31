@@ -1,4 +1,8 @@
-import { Module } from '@nestjs/common';
+// import { Module } from '@nestjs/common';
+// import { AdminController } from 'src/admin/admin.controller';
 
-@Module({})
-export class AdminModule {}
+
+// @Module({exports:[AdminController]})
+// export class AdminModule {
+
+// }
