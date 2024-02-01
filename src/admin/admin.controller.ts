@@ -2,9 +2,9 @@ import { Controller,Get, UseGuards,Req, Patch, Param, Body, Delete, ForbiddenExc
 import { JwtGuard } from 'src/auth/guard';
 import {GetAdmin} from 'src/auth/decorator'
 import { Admin, Prisma } from '@prisma/client';
-import { CreateClientDto } from 'src/client/dto/create-client.dto';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { AdminService } from './admin.service';
+// import { AdminService } from './admin.service';
 
  @UseGuards(JwtGuard) 
 @Controller('admins')
