@@ -20,24 +20,24 @@ model Admin{
   email String @unique
   whatsapp String?
   invoices Invoice[]
-  // projects Project []
+  projects Project []
   clients Client[]
   @@map("admins")
 } 
 
 model Client{
   id Int @id @default(autoincrement())
-  firstName String
+  firstName String?
   lastName String?
-  password String
+  hash String
   token String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  email String
+  email String @unique
   whatsapp String?
   adminId Int 
   admin Admin @relation(fields:[adminId],references: [id])
-  // projects Project [] //empty zaama?
+  projects Project [] //empty zaama?
   sharedLinks SharedLink[]
   invoices Invoice[]
 
@@ -59,9 +59,9 @@ model Project{
   deadline DateTime
   budget Decimal
   clientId Int 
-  // client Client @relation(fields:[clientId],references: [id])
+  client Client @relation(fields:[clientId],references: [id], onDelete: Cascade)
   adminId Int
-  // admin Admin @relation(fields:[adminId],references: [id])
+  admin Admin @relation(fields:[adminId],references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   categoryId Int

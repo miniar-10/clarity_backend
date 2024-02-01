@@ -14,10 +14,11 @@ import { ActionItemModule } from './action-item/action-item.module';
 import { MilestoneModule } from './milestone/milestone.module';
 import { ProjectModule } from './project/project.module';
 import { CategoryModule } from './category/category.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   // imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), AdminModule, ActionItemModule],
-  imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), ActionItemModule, MilestoneModule, ProjectModule, CategoryModule],
+  imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), ActionItemModule,AdminModule, MilestoneModule, ProjectModule, CategoryModule],
   controllers: [AppController],
   providers: [AppService],
 })
