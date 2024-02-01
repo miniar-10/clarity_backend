@@ -13,10 +13,11 @@ import { ActionItemModule } from './action-item/action-item.module';
 // import { ActionItemModule } from './action-item/action-item.module';
 import { MilestoneModule } from './milestone/milestone.module';
 import { ProjectModule } from './project/project.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   // imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), AdminModule, ActionItemModule],
-  imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), ActionItemModule, MilestoneModule, ProjectModule],
+  imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), ActionItemModule, MilestoneModule, ProjectModule, CategoryModule],
   controllers: [AppController],
   providers: [AppService],
 })

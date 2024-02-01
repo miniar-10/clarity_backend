@@ -20,7 +20,7 @@ model Admin{
   email String @unique
   whatsapp String?
   invoices Invoice[]
-  projects Project []
+  // projects Project []
   clients Client[]
   @@map("admins")
 } 
@@ -37,7 +37,7 @@ model Client{
   whatsapp String?
   adminId Int 
   admin Admin @relation(fields:[adminId],references: [id])
-  projects Project [] //empty zaama?
+  // projects Project [] //empty zaama?
   sharedLinks SharedLink[]
   invoices Invoice[]
 
@@ -53,23 +53,22 @@ model Project{
   id Int @id @default(autoincrement())
   name String?
   details String?
-  isPinned Boolean
+  isPinned Boolean @default(false)
   briefing String
-  is_reccurent Boolean
+  is_reccurent Boolean @default(false)
   deadline DateTime
   budget Decimal
   clientId Int 
-  client Client @relation(fields:[clientId],references: [id])
+  // client Client @relation(fields:[clientId],references: [id])
   adminId Int
-  projectLanguages Language []
-  admin Admin @relation(fields:[adminId],references: [id])
+  // admin Admin @relation(fields:[adminId],references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  serviceId Int
-  projectService Service @relation(fields: [serviceId], references: [id])
-  ressources Ressource[]
+  categoryId Int
+  projectCategory Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  // ressources Ressource[]
   invoiceId Int
-  invoice Invoice @relation(fields: [invoiceId],references: [id])
+  // invoice Invoice @relation(fields: [invoiceId],references: [id])
 } 
 // -is_finished: boolean(calculée)
 
@@ -97,10 +96,14 @@ model ActionItem{
 }
 model Language{
   id Int @id @default(autoincrement())
-  name String
-  isRessourceLanguage Boolean
-  isDeliverableLanguage Boolean
-  Projects Project[]
+  name String @unique
+}
+model ProjectLanguage{
+ id Int @id @default(autoincrement())
+ languageId Int
+ projectId Int
+ isRessourceLanguage Boolean @default(false)
+ isDeliverableLanguage Boolean @default(false)
 }
 model Status{
   id Int @id @default(autoincrement())
@@ -108,7 +111,7 @@ model Status{
   // milestones Milestone[]
 }
 
-model Service{
+model Category{
     id Int @id @default(autoincrement())
     name String
     projects Project[]
@@ -126,7 +129,7 @@ delivrables Delivrable[]
 model Ressource{
   id Int @id @default(autoincrement())
   projectId Int
-  project Project @relation(fields: [projectId], references: [id])
+  // project Project @relation(fields: [projectId], references: [id])
   sharedLinkId Int
   sharedLink SharedLink @relation(fields: [sharedLinkId], references: [id])
 }
@@ -142,7 +145,7 @@ model Invoice{
  createdAt DateTime @default(now())
  updatedAt DateTime @updatedAt
  paiedAt DateTime @default(now())
- projects Project[]
+//  projects Project[]
  clientId Int
  client Client @relation(fields: [clientId],references: [id])
  adminId Int

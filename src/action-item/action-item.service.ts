@@ -18,17 +18,18 @@ export class ActionItemService {
         name: createActionItemDto.name,
         description: createActionItemDto.description,
         milestoneId: createActionItemDto.milestoneId,
-        deadline:null,
+        deadline:createActionItemDto.deadline,
         assigneeId: createActionItemDto.assigneeId// Set other fields as necessary, based on your Prisma schema and DTO
       },
     
     })
     return actionItem;
   }
+  //if milestone id isn't availble we throw this eror
   catch (error) {
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       // Check for foreign key constraint failure, usually P2003
-      if (error.code === 'P2003') {
+     if (error.code === 'P2003') {
         throw new BadRequestException('Foreign key constraint failed on the field: `ActionItem_milestoneId_fkey`');
       }
     }

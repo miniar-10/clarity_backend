@@ -22,6 +22,7 @@ export class CreateActionItemDto {
   @IsNumber()
   assigneeId: number;
 
+  @IsOptional()
+  deadline: Date;
   
-
   }

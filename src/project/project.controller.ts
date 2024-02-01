@@ -10,6 +10,22 @@ export class ProjectController {
   @Post()
   create(@Body() createProjectDto: CreateProjectDto) {
     return this.projectService.create(createProjectDto);
+
+    /**
+      {
+        "name":"project name",
+        "details": "project details",
+        "isPinned": false,
+        "briefing":"project briefing",
+        "is_reccurent":false,
+        "deadline":"2024-02-23T18:25:43.511Z",
+        "budget":25,
+        "clientId":2 ,
+        "adminId":1,
+        "categoryId":1,
+        "invoiceId":2 
+      }
+     */
   }
 
   @Get()
@@ -20,6 +36,20 @@ export class ProjectController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.projectService.findOne(+id);
+  }
+
+  @Get('ressource_languages/:id')
+  findRessourceLanguages(@Param('id')id: string){
+    return this.projectService.findRessourceLnaguages(+ id)
+  }
+  
+  @Get('deliverable_languages/:id')
+  findDliverableLanguages(@Param('id')id: string){
+    return this.projectService.findDeliverableLnaguages(+id)
+  }
+  @Get('languages/:id')
+  findLanguages(@Param ('id') id: string){
+    return this.projectService.findLanguages(+id);
   }
 
   @Patch(':id')
