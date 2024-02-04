@@ -15,10 +15,25 @@ import { MilestoneModule } from './milestone/milestone.module';
 import { ProjectModule } from './project/project.module';
 import { CategoryModule } from './category/category.module';
 import { AdminModule } from './admin/admin.module';
+import { SwaggerModule,DocumentBuilder } from "@nestjs/swagger";
+//@nestjs/swagger
+// import { DocumentBuilder } from "swagger-ui-express";
 
 @Module({
   // imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), AdminModule, ActionItemModule],
-  imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), ActionItemModule,AdminModule, MilestoneModule, ProjectModule, CategoryModule],
+  imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), ActionItemModule,AdminModule, MilestoneModule, ProjectModule, CategoryModule,SwaggerModule
+  //   .forRoot({basePath: “/api”,
+  // securitySchemes: [
+  //   {
+  //   name: “bearer”,
+    
+  //   type: “http”,
+    
+  //   scheme: “bearer”,
+    
+  //   bearerFormat: “JWT”,
+  //   }]})
+   ],
   controllers: [AppController],
   providers: [AppService],
 })

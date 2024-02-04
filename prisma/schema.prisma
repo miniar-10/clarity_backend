@@ -102,6 +102,7 @@ model ProjectLanguage{
  id Int @id @default(autoincrement())
  languageId Int
  projectId Int
+ //These two fields should be primary keys 
  isRessourceLanguage Boolean @default(false)
  isDeliverableLanguage Boolean @default(false)
 }

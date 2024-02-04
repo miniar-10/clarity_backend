@@ -11,6 +11,8 @@ export class ProjectService {
 
   async create(createProjectDto: CreateProjectDto) {
     return await this.prisma.project.create({data:createProjectDto});
+
+    // WOOOOOOOOOOOOWWWWWWWW :o :o :o :o 
   }
 
   async findAll() {

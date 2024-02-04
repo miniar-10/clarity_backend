@@ -4,14 +4,24 @@ import {GetAdmin} from 'src/auth/decorator'
 import { Admin, Prisma } from '@prisma/client';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { AdminService } from './admin.service';
+import { ApiBearerAuth, ApiHeader } from '@nestjs/swagger';
+import { ApiTags } from '@nestjs/swagger';
+
 // import { AdminService } from './admin.service';
 
  @UseGuards(JwtGuard) 
 @Controller('admins')
+
+@ApiTags('Admin')
+@ApiHeader({
+  name: 'Authorization',
+  description: 'Some custom header',
+  required: false,
+})
 export class AdminController {
 
     constructor(private adminService:AdminService){}
-
+    // @ApiBearerAuth()
     @Get("me")
     getMe(@GetAdmin() admin: Admin, @GetAdmin('email') email: string){
         console.log({admin,})
