@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags("Category")
 @Controller('project/category')
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
@@ -12,7 +14,7 @@ export class CategoryController {
     return this.categoryService.create(createCategoryDto);
   }
 
-  @Get()
+  @Get("all")
   findAll() {
     return this.categoryService.findAll();
   }

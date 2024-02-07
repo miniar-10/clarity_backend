@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ProjectService } from './project.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags("Project")
 @Controller('project')
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
@@ -10,25 +12,9 @@ export class ProjectController {
   @Post()
   create(@Body() createProjectDto: CreateProjectDto) {
     return this.projectService.create(createProjectDto);
-
-    /**
-      {
-        "name":"project name",
-        "details": "project details",
-        "isPinned": false,
-        "briefing":"project briefing",
-        "is_reccurent":false,
-        "deadline":"2024-02-23T18:25:43.511Z",
-        "budget":25,
-        "clientId":2 ,
-        "adminId":1,
-        "categoryId":1,
-        "invoiceId":2 
-      }
-     */
   }
 
-  @Get()
+  @Get("all")
   findAll() {
     return this.projectService.findAll();
   }
@@ -50,6 +36,12 @@ export class ProjectController {
   @Get('languages/:id')
   findLanguages(@Param ('id') id: string){
     return this.projectService.findLanguages(+id);
+  }
+  //TODO: Get the project milestones & action items
+
+  @Get(':id/milestones')
+  FindMilestones (@Param('id')id : string) {
+    return this.projectService.findMilestones(+id);
   }
 
   @Patch(':id')

@@ -2,7 +2,7 @@ import { ForbiddenException, Injectable } from '@nestjs/common';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Language, Prisma } from '@prisma/client';
+import { Language, Milestone, Prisma } from '@prisma/client';
 
 @Injectable()
 export class ProjectService {
@@ -39,6 +39,8 @@ export class ProjectService {
         const lang_name=await this.prisma.language.findUnique({where:{id:language.languageId}});
         // if(lang_name){
         lang_names.push(lang_name)
+        //if is ressourceLanguage write ressourceLanguages
+        //if isDeliverableLanguage write DelievrableLanguage
         // }        
       }
       return lang_names
@@ -50,8 +52,6 @@ export class ProjectService {
       throw error;
     }
     }
-
-  
 
   async findRessourceLnaguages(id: number){
     try{
@@ -97,5 +97,21 @@ export class ProjectService {
       }
       }
 
+    //Milestone servicz
+    async findMilestones (id: number){
+      const Milestones=await this.prisma.milestone.findMany({where:{projectId:id}})
+      // let milestone:Milestone[]=[]
+      // for (const milestone of Milestones) {
+      //   const lang_name=await this.prisma.language.findUnique({where:{id:language.languageId}});
+      //   // if(lang_name){
+      //   lang_names.push(lang_name)
+      //   // }
+      //   console.log(lang_name)
+        
+      // }
+      // 
+      return Milestones;
+
+    }
   
 }

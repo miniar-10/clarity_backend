@@ -22,7 +22,7 @@ import { SwaggerModule,DocumentBuilder } from "@nestjs/swagger";
 @Module({
   // imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), AdminModule, ActionItemModule],
   imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), ActionItemModule,AdminModule, MilestoneModule, ProjectModule, CategoryModule,SwaggerModule
-  //   .forRoot({basePath: “/api”,
+  //   .forRoot({basePath: “/api”
   // securitySchemes: [
   //   {
   //   name: “bearer”,

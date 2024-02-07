@@ -2,7 +2,9 @@ import { Body, Controller, Delete, ForbiddenException, Get, Param, Patch } from 
 import { ClientService } from './client.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { Prisma } from '@prisma/client';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags("Client")
 @Controller('client')
 export class ClientController {
     constructor(private clientService: ClientService) {

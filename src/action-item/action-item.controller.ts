@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { ActionItemService } from './action-item.service';
 import { CreateActionItemDto } from './dto/create-action-item.dto';
 import { UpdateActionItemDto } from './dto/update-action-item.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags("Action Item")
 @Controller('projects/project-i/action-item')
 export class ActionItemController {
   constructor(private readonly actionItemService: ActionItemService) {}

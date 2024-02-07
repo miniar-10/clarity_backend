@@ -2,8 +2,10 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ProjectLanguageService } from './project-language.service';
 import { CreateProjectLanguageDto } from './dto/create-project-language.dto';
 import { UpdateProjectLanguageDto } from './dto/update-project-language.dto';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller('project-language')
+@ApiTags("Project language")
+@Controller('project_language')
 export class ProjectLanguageController {
   constructor(private readonly projectLanguageService: ProjectLanguageService) {}
 
@@ -12,7 +14,7 @@ export class ProjectLanguageController {
     return this.projectLanguageService.create(createProjectLanguageDto);
   }
 
-  @Get()
+  @Get("all")
   findAll() {
     return this.projectLanguageService.findAll();
   }

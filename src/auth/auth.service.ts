@@ -11,7 +11,7 @@ export class AuthService {
     constructor(private prisma: PrismaService,private jwt:  JwtService, private config: ConfigService){}
     async adminSignup(dto:AuthDto){
         const hash=await argon2.hash(dto.password)
-        
+        // dto.password
         try{const user=await this.prisma.admin.create({
             data:{
                 email:dto.email,
@@ -83,8 +83,8 @@ export class AuthService {
             user=client;
             role='client'
         }
+        //A ameliorer
 
-        
         // wrong mail exception
         if (!user) {
             throw new ForbiddenException ('invalid credentials');

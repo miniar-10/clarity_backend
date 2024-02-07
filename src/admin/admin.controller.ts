@@ -23,7 +23,9 @@ export class AdminController {
     constructor(private adminService:AdminService){}
     // @ApiBearerAuth()
     @Get("me")
-    getMe(@GetAdmin() admin: Admin, @GetAdmin('email') email: string){
+    // getMe(@GetAdmin() admin: Admin, @GetAdmin('email') email: string){
+    getMe(@GetAdmin() admin: Admin){
+
         console.log({admin,})
         return admin
     }
@@ -34,7 +36,7 @@ export class AdminController {
     //   }
 
     @Get(':/id')
-    getClient(@Param('id')id:number){
+    getAdmin(@Param('id')id:number){
         try{
         return this.adminService.getAdmin(+id)
         }
@@ -68,8 +70,8 @@ export class AdminController {
             throw error;
           }
     }
-    @Get(':/id')
+    @Get('clients/:id')
     getClients(@Param('id') id: number){
-        return this.adminService.getAddedClients(id);
+        return this.adminService.getAddedClients(+id);
     }
 }

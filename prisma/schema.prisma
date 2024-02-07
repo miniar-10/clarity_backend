@@ -79,9 +79,11 @@ model Milestone{
   order Int
   deadline DateTime
   deliveryDate DateTime
-  socre Float
+  score Float
   actionItems ActionItem[]
   statusId Int
+  projectId Int
+
   // status Status @relation(fields: [statusId], references: [id])
   // delivrables Delivrable[]
 }

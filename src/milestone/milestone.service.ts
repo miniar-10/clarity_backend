@@ -13,7 +13,9 @@ export class MilestoneService {
   async create(createMilestoneDto: CreateMilestoneDto) {
     
     const milestone = await this.prisma.milestone.create({
-      data: {
+      data: createMilestoneDto
+
+      /**{
         name: createMilestoneDto.name,
         details: createMilestoneDto.details,
         order: createMilestoneDto.order,
@@ -22,7 +24,9 @@ export class MilestoneService {
         socre: createMilestoneDto.socre,
         // actionItems: createMilestoneDto.actionItems,
         statusId :createMilestoneDto.statusId,
-      },
+        projectId :createMilestoneDto.ProjectId,
+
+      } */
     })
 
     return milestone;
@@ -51,7 +55,7 @@ export class MilestoneService {
         order: updateMilestoneDto.order,
         deadline: updateMilestoneDto.deadline,
         deliveryDate: updateMilestoneDto.deliveryDate,
-        socre: updateMilestoneDto.socre,
+        score: updateMilestoneDto.score,
         // actionItems: updateMilestoneDto.actionItems,
         statusId :updateMilestoneDto.statusId,
 

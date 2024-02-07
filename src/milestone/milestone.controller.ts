@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { MilestoneService } from './milestone.service';
 import { CreateMilestoneDto } from './dto/create-milestone.dto';
 import { UpdateMilestoneDto } from './dto/update-milestone.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags("Milestone")
 @Controller('milestone')
 export class MilestoneController {
   constructor(private readonly milestoneService: MilestoneService) {}

@@ -14,11 +14,14 @@ export class CreateMilestoneDto {
   @IsOptional()
   deliveryDate: Date
   @IsOptional()
-  socre: number
+  score: number
   @IsNotEmpty()
   statusId :number
+  //this should be String
+  @IsOptional()
+  projectId: number
   
-
+ 
 
 //   status Status @relation(fields: [statusId], references: [id])
 //   delivrables Delivrable[]

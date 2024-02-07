@@ -7,4 +7,7 @@ export class CreateLanguageDto {
     // // isRessourceLanguage: boolean
     // @IsOptional()
     // isDeliverableLanguage: boolean
+    //TODO:kqkqlqlq
+    //FIXME: lqlqlq
+    
 }
