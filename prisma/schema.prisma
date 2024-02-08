@@ -156,5 +156,5 @@ model Invoice{
  wordRate     Float?    // Word rate in $
  hourRate     Float?    // Hourly rate in $
  projects Project[]
-
+//discount  int [0-1]
 }

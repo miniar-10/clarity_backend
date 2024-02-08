@@ -1,0 +1,40 @@
+Admin
+Client
+Project(get the project's milestones& actionitems)(Hamed BID) DOONE :
+	TODO: 
+		Create automatically 3 milestones 
+			1 for brief, last one for Paiment, before last one called final Deliverables
+		 
+		Ressource
+		Deliverable
+	calculated
+		number of milestone
+		projet paid or not 
+		number of days left
+	Optional
+		invoice discount
+		wordrate : project number of words 
+	Recuurentproject
+
+	Authentification(nrak7oha maa lclasset l lezma fyhom)
+	Autorisation
+
+	FIXME:
+		Route 
+			Project related modules
+			SignIN
+		Milestone
+			[creation taa milestone jdida bch nincrementy fhe l milestones el jeyin]
+		Create Module: 
+
+	TOBEUPDATED: create swagger DTO 
+				 create documentation within controllers
+	
+
+
+
+
+look for milestones from project DONE:
+Status (Hamed)  DONE:
+
+Invoice(Hamed)  DONE:
