@@ -67,8 +67,8 @@ model Project{
   categoryId Int
   projectCategory Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   // ressources Ressource[]
-  invoiceId Int
-  // invoice Invoice @relation(fields: [invoiceId],references: [id])
+  invoiceId Int?
+  invoice Invoice @relation(fields: [id],references: [id])
 } 
 // -is_finished: boolean(calculée)
 
@@ -148,9 +148,13 @@ model Invoice{
  createdAt DateTime @default(now())
  updatedAt DateTime @updatedAt
  paiedAt DateTime @default(now())
-//  projects Project[]
+ projectId Int
  clientId Int
  client Client @relation(fields: [clientId],references: [id])
  adminId Int
  admin Admin @relation(fields: [adminId], references: [id])
+ wordRate     Float?    // Word rate in $
+ hourRate     Float?    // Hourly rate in $
+ projects Project[]
+
 }

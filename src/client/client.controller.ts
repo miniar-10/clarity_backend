@@ -3,6 +3,7 @@ import { ClientService } from './client.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { Prisma } from '@prisma/client';
 import { ApiTags } from '@nestjs/swagger';
+import { get } from 'http';
 
 @ApiTags("Client")
 @Controller('client')
@@ -15,7 +16,11 @@ export class ClientController {
     //     console.log({admin,})
     //     return admin
     // }
-    @Get(':/id')
+    @Get("all")
+    getAll(){        
+      return this.clientService.getAll()
+    }
+    @Get('/:id')
     getClient(@Param('id')id:number){
         try{
         return this.clientService.getClient(+id)
@@ -27,7 +32,7 @@ export class ClientController {
             throw error;
         }
     }
-    @Patch(':/id')
+    @Patch('/:id')
     editClient(@Param('id')id: number, @Body()createClientDto: CreateClientDto){
         try{
         return  this.clientService.editClient(+ id, createClientDto)
@@ -39,7 +44,7 @@ export class ClientController {
             throw error;
           }
       }
-    @Delete(':/id')
+    @Delete('/:id')
     deleteClient(@Param('id')id:number){
         try{
         return this.clientService.removeClient(+ id)

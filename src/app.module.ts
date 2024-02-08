@@ -18,10 +18,12 @@ import { AdminModule } from './admin/admin.module';
 import { SwaggerModule,DocumentBuilder } from "@nestjs/swagger";
 //@nestjs/swagger
 // import { DocumentBuilder } from "swagger-ui-express";
+import { InvoiceModule } from './invoice/invoice.module';
+import { StatusModule } from './status/status.module';
 
 @Module({
   // imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), AdminModule, ActionItemModule],
-  imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), ActionItemModule,AdminModule, MilestoneModule, ProjectModule, CategoryModule,SwaggerModule
+  imports: [PrismaModule, ClientModule, AuthModule, SoraClientModule,ConfigModule.forRoot({isGlobal:true}), ActionItemModule,AdminModule, MilestoneModule, ProjectModule, CategoryModule,SwaggerModule, InvoiceModule, StatusModule
   //   .forRoot({basePath: “/api”
   // securitySchemes: [
   //   {
